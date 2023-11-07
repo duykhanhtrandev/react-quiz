@@ -107,9 +107,12 @@ export default function App() {
   );
 
   useEffect(function () {
-    fetch("http://localhost:8000/questions")
+    fetch("https://react-quiz-api-er5a.onrender.com/questions")
       .then((res) => res.json())
-      .then((data) => dispatch({ type: "dataReceived", payload: data }))
+      .then((data) => {
+        dispatch({ type: "dataReceived", payload: data });
+        console.log(data);
+      })
       .catch((err) => dispatch({ type: "dataFailed" }));
   }, []);
 
